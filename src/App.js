@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import HeroSection from './components/HeroSection';
-
+import Menu from './components/Menu'
 
 function App() {
 
@@ -12,10 +12,10 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-          <Route path='/' exact />
+          <Route path='/' element={<HeroSection />} />
+          <Route path='/menu' exact element={<Menu />} />
       </Routes>
     </Router>
-      <HeroSection/>
     </>
   );
 }

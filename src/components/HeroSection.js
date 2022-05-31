@@ -3,11 +3,11 @@ import { Button } from './Button'
 import  katana  from '../images/ULOTKA_SET_KATANA.jpg'
 import './HeroSection.css'
 import set_katana_480px from "../images/set_katana_480px.png"
-import set_katana_cena_480px from "../images/set_katana_cena_480px.png"
+import set_katana_cena_480px from "../images/set_katana_cena_480px_d.png"
 import set_party_480px from "../images/set_party_480px.png"
-import set_party_cena_480px from "../images/set_party_cena_480px.png"
+import set_party_cena_480px from "../images/set_party_cena_480px_a.png"
 import set_katana_360px from "../images/set_katana_360px.png"
-import set_katana_cena_360px from "../images/set_katana_cena_360px.png"
+import set_katana_cena_360px from "../images/set_katana_cena_360px_b.png"
 import set_party_360px from "../images/set_party_360px.png"
 import set_party_cena_360px from "../images/set_party_cena_360px.png"
 
