@@ -3,38 +3,30 @@ import SingleCart from './SingleCart'
 import './Order.css'
 
 
+function Order(props){   
 
-class Order extends Component {
+    const {products} = props;
 
-  state = {
-    singleCarts: [
-      {image: "set_katana_480px", price: "200 zł", description: "8x sushi z łososia i 4x sushi z gówna xd" },
-      {image: "set_katana_480px", price: "240 zł", description: "Najlepsze w mieście sushi z parówki" }
-    ]
-  }
-
-  render(){
     return (
       <div className='order-container'>
         <table className='table-container'>
+          {products.map((product) => (
+            <SingleCart key={product.id} image={product.image} description={product.description} price={product.price} />
+          ))}
           <tr>
-            <th>SET</th>
-            <th>Opis</th>
-            <th>Cena za zestaw</th>
-            <th>Zamów</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <div className='add-to-cart-button'>
+              <button>Dodaj do koszyka</button>
+            </div>
+          </td>
           </tr>
-          <SingleCart 
-              description={this.state.singleCarts[0].description} 
-              price={this.state.singleCarts[0].price}
-            />
-          <SingleCart 
-              description={this.state.singleCarts[1].description} 
-              price={this.state.singleCarts[1].price}
-            />
         </table>
+
       </div>  
       )
-  }
 }
 
 export default Order

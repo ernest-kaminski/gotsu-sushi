@@ -1,4 +1,8 @@
 .order-container {
+    background-color: #000000;
+    padding-left: 18%;
+    padding-right: 18%;
+    color: white;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,5 +19,13 @@
 }
 
 td {
-    padding: 30px;
+    padding: 20px;
+
+}
+
+.add-to-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
