@@ -21,6 +21,12 @@ const data = {
             price: "240", 
             description: "Najle22psze w mieście sushi z parówki" 
         },
+        {
+            id: "4",
+            image: set_katana_cena_360px, 
+            price: "240", 
+            description: "Najleasdasdasdasdassushi z parówki" 
+        },
       ],
 };
 

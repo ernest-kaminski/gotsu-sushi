@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import gatsuLogo from "../images/gatsu-logo-80px.png"
 import gatsuLogoMobile from "../images/gatsu-logo-43px.png"
+import cartIcon from "../images/shopping-cart-grey.png"
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -53,6 +54,15 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
+                to='/cart'
+                className='nav-links-cart'
+                onClick={closeMobileMenu}
+              >
+                Koszyk
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
                 to='/contact'
                 className='nav-links'
                 onClick={closeMobileMenu}
@@ -60,7 +70,6 @@ function Navbar() {
                 Kontakt
               </Link>
             </li>
-
             <li>
               <Link
                 to='/order'
@@ -70,8 +79,20 @@ function Navbar() {
                 ZŁÓŻ ZAMÓWIENIE
               </Link>
             </li>
+            <li className='nav-item'>
+            {button && <Button buttonStyle='btn--outline'>ZŁÓŻ ZAMÓWIENIE</Button>}
+            </li>
+            <li className='nav-item' >
+              <Link
+                to='/cart'
+                className='nav-links-cart-icon'
+                onClick={closeMobileMenu}
+              >
+                <img src={cartIcon} />
+              </Link>
+            </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>ZŁÓŻ ZAMÓWIENIE</Button>}
+          
         </div>
       </nav>
     </>

@@ -1,9 +1,9 @@
 import React from 'react'
-import './Menu.css';
+import './HeroSection.css';
 
 function menu() {
   return (
-    <div className='menu-container'>menu</div>
+    <div className='main-container'>menu</div>
   )
 }
 

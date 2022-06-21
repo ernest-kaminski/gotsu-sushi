@@ -19,6 +19,7 @@ function Counter(props){
             <button className='increase-and-decrease-button' onClick={increaseCounter}>Plus</button>
             {count}
             <button className='increase-and-decrease-button' onClick={decreaseCounter}>minus</button>
+            <button onClick={props.counterHandleClick(count)}>test</button>
             <div className='total-cost'>{totalPrice*count}</div>
         </div>
         )
