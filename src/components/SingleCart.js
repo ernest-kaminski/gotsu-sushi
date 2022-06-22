@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './SingleCart.css'
 
 
 function SingleCart(props){
+
+  var {itemQty} = props;
 
   const [count, setCount] = useState(0);
   const increaseCounter = () => {
@@ -16,6 +18,13 @@ function SingleCart(props){
           props.handleClick(props.id, count - 1);
       }        
     }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if(itemQty !== undefined && itemQty !== 0){
+      setCount(itemQty)
+    }
+  }, []);
 
 
       return (   

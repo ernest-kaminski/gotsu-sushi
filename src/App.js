@@ -11,10 +11,11 @@ import Contact from './components/Contact';
 import Cart from './components/Cart';
 
  
-function App() {
+export default function App() {
 
 const {products} = data;
 const[cartItems, setCartItems] = useState([]);
+const[finalCartItems, setFinalCartItems] = useState([]);
 const onAdd = (product) => {
   const exist = cartItems.find(x => x.id === product.id);
   if(exist){
@@ -23,6 +24,14 @@ const onAdd = (product) => {
     setCartItems([...cartItems, {...product, qty: 1}]);
   }
   console.log(cartItems);
+}
+
+const handleClick = (SingleCartId, SingleCartQuantity) => {
+  onAdd(products[SingleCartId-1]);
+}
+
+const onSubmit = () => {
+  setFinalCartItems(cartItems);
 }
 
   return (
@@ -34,8 +43,8 @@ const onAdd = (product) => {
           <Route path='/menu' exact element={<Menu />} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/cart' exact element={<Cart cartItems = {cartItems}/>} />
-          <Route path='/order' exact element={<Order onAdd={onAdd} products={products}/>} />
+          <Route path='/cart' exact element={<Cart cartItems = {finalCartItems} handleClick={handleClick} />} />
+          <Route path='/order' exact element={<Order onAdd={onAdd} products={products} onSubmit={onSubmit} handleClick={handleClick} cartItems={cartItems}/>}  />
 
       </Routes>
     </Router>
@@ -43,4 +52,3 @@ const onAdd = (product) => {
   );
 }
 
-export default App;

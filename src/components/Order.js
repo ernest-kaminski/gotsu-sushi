@@ -5,16 +5,13 @@ import './Order.css'
 
 function Order(props){   
 
-    const {products, onAdd} = props;
-    const handleClick = (SingleCartId, SingleCartQuantity) => {
-      props.onAdd(products[SingleCartId-1]);
-    }
+    const {products, onSubmit, handleClick, cartItems} = props;
 
     return (
       <div className='order-container'>
         <table className='table-container'>
           {products.map((product) => (
-            <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} handleClick={handleClick} />
+            <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} handleClick={handleClick}  itemQty={cartItems.itemQty}/>
           ))}
           <tr>
           <td></td>
@@ -22,7 +19,7 @@ function Order(props){
           <td></td>
           <td>
             <div className='add-to-cart-button'>
-              <button>Dodaj do koszyka</button>
+              <button onClick={() => onSubmit()}>Dodaj do koszyka</button>
             </div>
           </td>
           </tr>
