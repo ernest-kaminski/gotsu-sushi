@@ -16,22 +16,50 @@ export default function App() {
 const {products} = data;
 const[cartItems, setCartItems] = useState([]);
 const[finalCartItems, setFinalCartItems] = useState([]);
+
+var test;
+
 const onAdd = (product) => {
   const exist = cartItems.find(x => x.id === product.id);
   if(exist){
-    setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x));
+    setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1, totalCost: (exist.qty+1)*product.price} : x));
   } else {
-    setCartItems([...cartItems, {...product, qty: 1}]);
+    setCartItems([...cartItems, {...product, qty: 1, totalCost: product.price}]);
   }
-  console.log(cartItems);
+
 }
 
-const handleClick = (SingleCartId, SingleCartQuantity) => {
+const onRemove = (product) => {
+  const exist = cartItems.find(x => x.id === product.id);
+  if(exist.qty === 1 ){
+    setCartItems(cartItems.filter((x) => x.id !== product.id));
+  }else{
+    setCartItems(
+      cartItems.map((x) => x.id === product.id ? {...exist, qty: exist.qty-1, totalCost: (exist.qty-1)*product.price} : x)
+    )
+  }
+
+}
+
+const handleClickAdd = (SingleCartId, SingleCartQuantity) => {
   onAdd(products[SingleCartId-1]);
 }
 
+const handleClickRemove = (SingleCartId, SingleCartQuantity) => {
+  onRemove(products[SingleCartId-1]);
+}
+
+
 const onSubmit = () => {
   setFinalCartItems(cartItems);
+}
+
+const countTotalCost = (cartItems) => {
+  var x = 0;
+  for(var i=0; i < cartItems.length; i++){
+    x = Number(x) + Number(cartItems[i].totalCost); 
+  }
+  return x;
 }
 
   return (
@@ -43,8 +71,8 @@ const onSubmit = () => {
           <Route path='/menu' exact element={<Menu />} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/cart' exact element={<Cart cartItems = {finalCartItems} handleClick={handleClick} />} />
-          <Route path='/order' exact element={<Order onAdd={onAdd} products={products} onSubmit={onSubmit} handleClick={handleClick} cartItems={cartItems}/>}  />
+          <Route path='/cart' exact element={<Cart cartItems = {finalCartItems} onAdd={handleClickAdd} onRemove={handleClickRemove} countTotalCost={countTotalCost}/>} />
+          <Route path='/order' exact element={<Order onAdd={handleClickAdd} onRemove={handleClickRemove} products={products} onSubmit={onSubmit} cartItems={finalCartItems}/>}  />
 
       </Routes>
     </Router>

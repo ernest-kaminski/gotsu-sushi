@@ -9,13 +9,13 @@ function SingleCart(props){
   const [count, setCount] = useState(0);
   const increaseCounter = () => {
     setCount(count + 1);
-    props.handleClick(props.id, count + 1);
+    props.onAdd(props.id);
     }
 
   const decreaseCounter = () => {
       if(count > 0){
           setCount(count - 1) ;
-          props.handleClick(props.id, count - 1);
+          props.onRemove(props.id);
       }        
     }
 
