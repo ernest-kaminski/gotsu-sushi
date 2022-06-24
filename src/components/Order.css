@@ -23,9 +23,14 @@ td {
 
 }
 
-.add-to-cart-button {
+.buttons-container {
+    width: 100%;
+    padding-right: 16%;
+    padding-bottom: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    flex-direction: row;
+    justify-content: flex-end;
 }
+
+
+

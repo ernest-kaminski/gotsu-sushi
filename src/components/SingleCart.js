@@ -4,18 +4,24 @@ import './SingleCart.css'
 
 function SingleCart(props){
 
-  var {itemQty} = props;
+  var {itemQty, onTotalCostUpdate} = props;
 
   const [count, setCount] = useState(0);
   const increaseCounter = () => {
     setCount(count + 1);
     props.onAdd(props.id);
+    if(onTotalCostUpdate !== undefined){
+        onTotalCostUpdate();
+      }
     }
 
   const decreaseCounter = () => {
       if(count > 0){
           setCount(count - 1) ;
           props.onRemove(props.id);
+          if(onTotalCostUpdate !== undefined){
+            onTotalCostUpdate();
+          }
       }        
     }
 

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SingleCart from './SingleCart'
 import './Order.css'
+import './Button.css'
+import Popup from './Popup'
 
 
 function Order(props){   
@@ -12,25 +14,41 @@ function Order(props){
       else return itemQty.qty
     }
 
+    const [popupOpened, setPopupOpened] = useState(false);
+
+    const onAddtoCart = () => {
+      setPopupOpened(true);
+      onSubmit();
+    }
+
+    const onClosePopup = () => {
+      setPopupOpened(false);
+    }
+
     return (
       <div className='order-container'>
+        <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={cartItems}>
+          <h3>Dodano produkty do koszyka</h3>
+        </Popup>
         <table className='table-container'>
         {products.map((product) => (
-          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} 
+          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove}
           itemQty={() => checkCartQty(product)}/>
           ))}
           <tr>
           <td></td>
           <td></td>
           <td></td>
-          <td>
-            <div className='add-to-cart-button'>
-              <button onClick={() => onSubmit()}>Dodaj do koszyka</button>
-            </div>
-          </td>
           </tr>
         </table>
-
+        <div className='buttons-container'>
+            <div>
+              <button className='btn--order'>Zamów teraz</button>
+            </div>
+            <div>
+              <button className='btn--order' onClick={() => onAddtoCart()}>Dodaj do koszyka</button>
+            </div>
+          </div>
       </div>  
       )
 }

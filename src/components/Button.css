@@ -34,8 +34,16 @@
     font-size: 20px;
 }
 
-.btn--medium:hover, .btn--large:hover {
-    background: #fff;
+.btn--order {
+    padding: 8px 20px;
+    font-size: 20px;
+    background: var(--primary);
+    color: #242424;
+}
+
+.btn--medium:hover, .btn--large:hover, .btn--order:hover {
+    cursor: pointer;
+    background: #ccc;
     color: #242424;
     transition: 250ms;
 }

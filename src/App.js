@@ -71,7 +71,7 @@ const countTotalCost = (cartItems) => {
           <Route path='/menu' exact element={<Menu />} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
-          <Route path='/cart' exact element={<Cart cartItems = {finalCartItems} onAdd={handleClickAdd} onRemove={handleClickRemove} countTotalCost={countTotalCost}/>} />
+          <Route path='/cart' exact element={<Cart finalCartItems = {finalCartItems} cartItems={cartItems} onAdd={handleClickAdd} onRemove={handleClickRemove} countTotalCost={countTotalCost}/>} />
           <Route path='/order' exact element={<Order onAdd={handleClickAdd} onRemove={handleClickRemove} products={products} onSubmit={onSubmit} cartItems={finalCartItems}/>}  />
 
       </Routes>
