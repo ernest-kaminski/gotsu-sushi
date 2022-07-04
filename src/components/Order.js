@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import SingleCart from './SingleCart'
 import './Order.css'
 import './Button.css'
@@ -7,6 +7,12 @@ import Popup from './Popup'
 function Order(props){   
     const {products, onSubmit, onAdd, onRemove, cartItems, resetCartItems} = props;
     const [popupOpened, setPopupOpened] = useState(false);
+
+    useEffect(() => {
+      cartItems.map((x) => products[x.id - 1].qty = x.qty)
+      console.log(cartItems)
+    }, [])
+
     const onAddtoCart = () => {
       setPopupOpened(true);
       onSubmit();
@@ -23,7 +29,7 @@ function Order(props){
         </Popup>
         <table className='table-container'>
         {products.map((product) => (
-          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove}/>
+          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} itemQty={product.qty}/>
           ))}
           <tr>
           <td></td>

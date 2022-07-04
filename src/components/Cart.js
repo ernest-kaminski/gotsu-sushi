@@ -3,11 +3,17 @@ import './Cart.css';
 import SingleCart from './SingleCart';
 
 function Cart(props) {
-
   const {finalCartItems, onAdd, onRemove, countTotalCost} = props;
   const [totalCost, setTotalCost] = useState(countTotalCost(finalCartItems));
+  const [start, setStart] = useState(true)
   useEffect(() => {
+    if(start){
+      finalCartItems.map((product) => {
+        if(product.qty === 0){onRemove(product.id)}
+      })
+    } 
     setTotalCost(countTotalCost(finalCartItems));
+    setStart(false)
   })
 
   return (
