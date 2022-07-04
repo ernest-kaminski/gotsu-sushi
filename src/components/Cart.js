@@ -1,15 +1,14 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Cart.css';
 import SingleCart from './SingleCart';
 
 function Cart(props) {
 
-  const {finalCartItems, cartItems, onAdd, onRemove, countTotalCost} = props;
-  const [totalCost, setTotalCost] = useState(countTotalCost(cartItems));
-
-  const onTotalCostUpdate = () => {
-    setTotalCost(countTotalCost(cartItems));
-  }
+  const {finalCartItems, onAdd, onRemove, countTotalCost} = props;
+  const [totalCost, setTotalCost] = useState(countTotalCost(finalCartItems));
+  useEffect(() => {
+    setTotalCost(countTotalCost(finalCartItems));
+  })
 
   return (
     <div className='cart-container'>    
@@ -25,7 +24,6 @@ function Cart(props) {
                 onAdd={onAdd} 
                 onRemove={onRemove}
                 itemQty={product.qty}
-                onTotalCostUpdate={onTotalCostUpdate}
                 />
             ))}
       </table>

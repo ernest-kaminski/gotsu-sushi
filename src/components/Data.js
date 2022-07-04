@@ -36,7 +36,7 @@ const data = {
         {
             id: "6",
             image: set_katana_cena_360px, 
-            price: "300", 
+            price: "250", 
             description: "Litwo Ojczyzno moja" 
         },
       ],

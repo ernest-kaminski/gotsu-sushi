@@ -4,18 +4,9 @@ import './Order.css'
 import './Button.css'
 import Popup from './Popup'
 
-
 function Order(props){   
-
-    const {products, onSubmit, onAdd, onRemove, cartItems} = props;
-    const checkCartQty = (product) => {
-      var itemQty = cartItems.find(x => x.id === product.id);
-      if(itemQty === undefined) return 0;
-      else return itemQty.qty
-    }
-
+    const {products, onSubmit, onAdd, onRemove, cartItems, resetCartItems} = props;
     const [popupOpened, setPopupOpened] = useState(false);
-
     const onAddtoCart = () => {
       setPopupOpened(true);
       onSubmit();
@@ -27,13 +18,12 @@ function Order(props){
 
     return (
       <div className='order-container'>
-        <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={cartItems}>
+        <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={cartItems} resetCartItems={resetCartItems}>
           <h3>Dodano produkty do koszyka</h3>
         </Popup>
         <table className='table-container'>
         {products.map((product) => (
-          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove}
-          itemQty={() => checkCartQty(product)}/>
+          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove}/>
           ))}
           <tr>
           <td></td>
