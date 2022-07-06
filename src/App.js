@@ -16,10 +16,6 @@ const {products} = data;
 const[cartItems, setCartItems] = useState([]);
 const[finalCartItems, setFinalCartItems] = useState([]);
 
-const resetFinalCartItems = () => {
-  setFinalCartItems([]);
-}
-
 const resetCartItems = () => {
   setCartItems([]);
 }
@@ -48,30 +44,29 @@ const onAddFinalSingleCartItem = (product) => {
   const exist = finalCartItems.find(x => x.id === product.id);
   if(exist){
     setFinalCartItems(finalCartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1, totalCost: (exist.qty+1)*product.price} : x));
-    console.log("exists: " + finalCartItems)
    } else {
      setFinalCartItems([...finalCartItems, {...product, qty: product.qty, totalCost: product.price}]);
-     console.log("non-exists: " + finalCartItems)
    }
 }
 
-
 const onAddFinalCartItem = (cartItems) => {
 
-  var items = finalCartItems
-  var exist;
+  // add multiple items to existing array
 
-  cartItems.map((product, index) => {
-        exist = finalCartItems.find(x => x.id === product.id);
-        if(exist){
-          items[index] = {...exist, qty: exist.qty + product.qty, totalCost: (exist.qty+product.qty)*product.price};
-        } else {
-          items.push({...product, qty: product.qty, totalCost: product.price*product.qty});
-        }
-      }
-    )
-
-  setFinalCartItems(items);
+  // var items = finalCartItems
+  // var exist;
+  // cartItems.map((product, index) => {
+  //       exist = finalCartItems.find(x => x.id === product.id);
+  //       if(exist){
+  //         const condition = (element) => element === exist;
+  //         items[items.findIndex(condition)] = {...exist, qty: exist.qty + product.qty, totalCost: (exist.qty+product.qty)*product.price};
+  //       } else {
+  //         items.push({...product, qty: product.qty, totalCost: product.price*product.qty});
+  //       }
+  //     }
+  //   )
+  // setFinalCartItems(items);
+  setFinalCartItems(cartItems);
 }
 
 const onRemoveFinalCartItem = (product) => {
@@ -101,9 +96,12 @@ const handleClickRemoveFinalCartItems = (SingleCartId) => {
   onRemoveFinalCartItem(products[SingleCartId-1]);
 }
 
-const onSubmit = () => {
+const prepareCartItemsFromCart = () => {
+  setCartItems(finalCartItems);
+}
+
+const onSubmit = () => {  
   onAddFinalCartItem(cartItems)
-  resetCartItems();
 }
 
 const countTotalCost = (cartItems) => {
@@ -124,7 +122,15 @@ const countTotalCost = (cartItems) => {
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/contact' exact element={<Contact />} />
           <Route path='/cart' exact element={<Cart finalCartItems = {finalCartItems} cartItems={cartItems} onAdd={handleClickAddFinalSingleCartItems} onRemove={handleClickRemoveFinalCartItems} countTotalCost={countTotalCost}/>} />
-          <Route path='/order' exact element={<Order onAdd={handleClickAddCartItems} onRemove={handleClickRemoveCartItems} products={products} onSubmit={onSubmit} cartItems={finalCartItems} resetCartItems={resetCartItems}/>}  />
+          <Route path='/order' exact element={<Order 
+            onAdd={handleClickAddCartItems} 
+            onRemove={handleClickRemoveCartItems} 
+            products={products} 
+            onSubmit={onSubmit} 
+            finalCartItems={finalCartItems}  
+            resetCartItems={resetCartItems}
+            prepareCartItemsFromCart={prepareCartItemsFromCart}
+            />}  />
       </Routes>
     </Router>
     </>

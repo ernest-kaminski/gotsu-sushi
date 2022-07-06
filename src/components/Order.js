@@ -5,26 +5,29 @@ import './Button.css'
 import Popup from './Popup'
 
 function Order(props){   
-    const {products, onSubmit, onAdd, onRemove, cartItems, resetCartItems} = props;
+    const {products, onSubmit, onAdd, onRemove, finalCartItems, resetCartItems, prepareCartItemsFromCart} = props;
     const [popupOpened, setPopupOpened] = useState(false);
-
-    useEffect(() => {
-      cartItems.map((x) => products[x.id - 1].qty = x.qty)
-      console.log(cartItems)
-    }, [])
-
+    
     const onAddtoCart = () => {
       setPopupOpened(true);
       onSubmit();
     }
 
     const onClosePopup = () => {
-      setPopupOpened(false);
+      setPopupOpened(false);  
     }
+
+    useEffect(() => {
+      prepareCartItemsFromCart();
+    }, [])
+
+    useEffect(() => {
+      finalCartItems.map((x) => products[x.id - 1].qty = x.qty)
+    }, [() => onClosePopup])
 
     return (
       <div className='order-container'>
-        <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={cartItems} resetCartItems={resetCartItems}>
+        <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={finalCartItems} resetCartItems={resetCartItems}>
           <h3>Dodano produkty do koszyka</h3>
         </Popup>
         <table className='table-container'>
@@ -42,11 +45,12 @@ function Order(props){
               <button className='btn--order'>Zamów teraz</button>
             </div>
             <div>
-              <button className='btn--order' onClick={() => onAddtoCart()}>Dodaj do koszyka</button>
+              <button className='btn--order' onClick={() => onAddtoCart()}>{finalCartItems.length == 0 ? "Dodaj do koszyka" : "Zaktualizuj koszyk"} </button>
             </div>
           </div>
       </div>  
       )
 }
+
 
 export default Order
