@@ -25,19 +25,7 @@ const data = {
             id: "4",
             image: set_katana_cena_360px, 
             price: "240", 
-            description: "Najleasdasdasdasdassushi z parówki" 
-        },
-        {
-            id: "5",
-            image: set_katana_cena_360px, 
-            price: "150", 
-            description: "NLorem Ipsumi" 
-        },
-        {
-            id: "6",
-            image: set_katana_cena_360px, 
-            price: "250", 
-            description: "Litwo Ojczyzno moja" 
+            description: "SUSSSSSHHHHHIIIII!!!!!" 
         },
       ],
 };

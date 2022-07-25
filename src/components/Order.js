@@ -21,19 +21,20 @@ function Order(props){
       prepareCartItemsFromCart();
     }, [])
 
-    useEffect(() => {
+    function mappedSingleCarts() {
       finalCartItems.map((x) => products[x.id - 1].qty = x.qty)
-    }, [() => onClosePopup])
-
+      return(products.map((product) => ( 
+        <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} itemQty={product.qty}/>
+        )))
+      }
+    
     return (
       <div className='order-container'>
         <Popup trigger={popupOpened} onClosePopup={onClosePopup} cartItems={finalCartItems} resetCartItems={resetCartItems}>
           <h3>Dodano produkty do koszyka</h3>
         </Popup>
         <table className='table-container'>
-        {products.map((product) => (
-          <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} itemQty={product.qty}/>
-          ))}
+          {mappedSingleCarts()}
           <tr>
           <td></td>
           <td></td>
