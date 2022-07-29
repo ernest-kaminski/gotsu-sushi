@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './Cart.css';
+import './Button.css'
 import SingleCart from './SingleCart';
 
 function Cart(props) {
@@ -33,7 +34,8 @@ function Cart(props) {
                 />
             ))}
       </table>
-      <div>Łączna cena koszyka: {totalCost}</div>
+      <div className='summary'>Łączna cena koszyka: {totalCost}</div>
+      <buttton className='btn--order'>Zamów teraz</buttton>
     </div>
   )
 }

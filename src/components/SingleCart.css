@@ -2,6 +2,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    
 }
 
 .add-to-cart{
@@ -17,11 +18,33 @@
     width: 100%;
 }
 
+.count-value-container{
+    justify-content: center;
+    align-items: center;
+    padding: 0px 8px 0px 8px;
+    margin: 12px;
+    font-size: 32px;
+}
+
 .increase-and-decrease-button{
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin: 10px;
+    padding: 0px 12px 0px 12px;
+    margin: 8px;
+    font-size: 48px;
+    border: 2px solid rgb(218, 29, 29);
+    border-radius: 6px;
+}
+
+.increase-and-decrease-button:hover{
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px 0px 12px;
+    margin: 8px;
+    cursor: pointer;
+    font-size: 48px;
+    border-bottom: 2px solid rgb(218, 29, 29);
+    border-radius: 6px;
 }
 
 .total-cost {

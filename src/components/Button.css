@@ -1,5 +1,6 @@
 :root {
     --primary: #fff;
+    --red: rgb(218, 29, 29);
 }
 
 .btn {
@@ -39,6 +40,9 @@
     font-size: 20px;
     background: var(--primary);
     color: #242424;
+    border: 2px solid var(--red);
+    border-radius: 6px;
+    margin: 4px;
 }
 
 .btn--medium:hover, .btn--large:hover, .btn--order:hover {

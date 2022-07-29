@@ -20,7 +20,6 @@ function Order(props){
     useEffect(() => {
       prepareCartItemsFromCart();
     }, [])
-
     function mappedSingleCarts() {
       finalCartItems.map((x) => products[x.id - 1].qty = x.qty)
       return(products.map((product) => ( 
@@ -46,7 +45,7 @@ function Order(props){
               <button className='btn--order'>Zamów teraz</button>
             </div>
             <div>
-              <button className='btn--order' onClick={() => onAddtoCart()}>{finalCartItems.length == 0 ? "Dodaj do koszyka" : "Zaktualizuj koszyk"} </button>
+              <button className='btn--order' onClick={() => onAddtoCart()}>{finalCartItems.length === 0 ? "Dodaj do koszyka" : "Zaktualizuj koszyk"} </button>
             </div>
           </div>
       </div>  

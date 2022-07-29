@@ -35,9 +35,9 @@ function SingleCart(props){
          <td>
             <div className='add-to-cart-container'>
               <div className='counter-container'>
-                <button className='increase-and-decrease-button' onClick={increaseCounter}>Plus</button>
-                {count}
-                <button className='increase-and-decrease-button' onClick={decreaseCounter}>minus</button>
+                <button className='increase-and-decrease-button' onClick={increaseCounter}>+</button>
+                <div className='count-value-container'>{count}</div>
+                <button className='increase-and-decrease-button' onClick={decreaseCounter}>-</button>
                 <div className='total-cost'>{props.price*count}</div>
               </div>
             </div>
