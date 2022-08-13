@@ -9,6 +9,7 @@ import data from './components/Data'
 import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
+import OrderForm from './components/OrderForm';
 
 export default function App() {
 
@@ -137,6 +138,7 @@ const countTotalCost = (cartItems) => {
             resetCartItems={resetCartItems}
             prepareCartItemsFromCart={prepareCartItemsFromCart}
             />}  />
+            <Route path='/make-order' exact element={<OrderForm  finalCartItems={finalCartItems}  />} />
       </Routes>
     </Router>
     </>

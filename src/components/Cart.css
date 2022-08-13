@@ -22,9 +22,13 @@ body{
 
 td {
     padding: 20px;
-
 }
 
 .summary {
     margin-bottom: 20px;
+}
+
+.clean-link {
+    text-decoration:  none;
+    color: #000000;
 }

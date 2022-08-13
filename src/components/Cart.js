@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './Cart.css';
 import './Button.css'
 import SingleCart from './SingleCart';
+import { Link } from 'react-router-dom';
 
 function Cart(props) {
   const {finalCartItems, onAdd, onRemove, countTotalCost} = props;
@@ -35,7 +36,11 @@ function Cart(props) {
             ))}
       </table>
       <div className='summary'>Łączna cena koszyka: {totalCost}</div>
-      <buttton className='btn--order'>Zamów teraz</buttton>
+      <buttton className='btn--order'>
+          <Link to='/make-order' className='clean-link'>
+            Zamów teraz               
+          </Link>
+        </buttton>
     </div>
   )
 }

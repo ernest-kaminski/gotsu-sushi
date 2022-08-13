@@ -1,0 +1,24 @@
+.order-form-container{
+    width: 100%;
+    color: brown;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+input{
+    background-color: #333;
+    margin-bottom: 15px;
+}

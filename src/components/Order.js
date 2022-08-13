@@ -3,6 +3,7 @@ import SingleCart from './SingleCart'
 import './Order.css'
 import './Button.css'
 import Popup from './Popup'
+import { Link } from 'react-router-dom';
 
 function Order(props){   
     const {products, onSubmit, onAdd, onRemove, finalCartItems, resetCartItems, prepareCartItemsFromCart} = props;
@@ -10,6 +11,10 @@ function Order(props){
     
     const onAddtoCart = () => {
       setPopupOpened(true);
+      onSubmit();
+    }
+
+    const onOrderNow = () => {
       onSubmit();
     }
 
@@ -42,7 +47,11 @@ function Order(props){
         </table>
         <div className='buttons-container'>
             <div>
-              <button className='btn--order'>Zamów teraz</button>
+              <button className='btn--order' onClick={() => onOrderNow()}>
+                <Link to='/make-order' className='clean-link'>
+                  Zamów teraz
+                </Link>
+              </button>
             </div>
             <div>
               <button className='btn--order' onClick={() => onAddtoCart()}>{finalCartItems.length === 0 ? "Dodaj do koszyka" : "Zaktualizuj koszyk"} </button>
