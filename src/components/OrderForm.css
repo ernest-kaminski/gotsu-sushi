@@ -2,11 +2,20 @@
     width: 100%;
     color: brown;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
 }
 
 .form-container{
     padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-summary-container{
     display: flex;
     flex-direction: column;
     justify-content: center;

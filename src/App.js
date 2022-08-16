@@ -138,7 +138,7 @@ const countTotalCost = (cartItems) => {
             resetCartItems={resetCartItems}
             prepareCartItemsFromCart={prepareCartItemsFromCart}
             />}  />
-            <Route path='/make-order' exact element={<OrderForm  finalCartItems={finalCartItems}  />} />
+            <Route path='/make-order' exact element={<OrderForm  finalCartItems={finalCartItems} countTotalCost={countTotalCost}  />} />
       </Routes>
     </Router>
     </>

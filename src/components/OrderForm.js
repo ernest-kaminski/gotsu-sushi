@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import "./OrderForm.css"
 import './Button.css'
+import SingleCartDetails from './SingleCartDetails'
 
 const OrderForm = (props) => {
-    const {finalCartItems} = props;
+    const {finalCartItems, countTotalCost} = props;
+    const totalCost = countTotalCost(finalCartItems)
 
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
@@ -21,6 +23,7 @@ const OrderForm = (props) => {
         console.log(surname)
         console.log(address)
         console.log(email)
+        console.log(contact)
 
         console.log("zamówione: ")
         console.log(finalCartItems)
@@ -41,6 +44,22 @@ const OrderForm = (props) => {
             <input type="text" id="contact" name="lname" required onChange={(e) => setContact(e.target.value)}/>
             <button className='btn--order' type='submit'>Zamów</button>
         </form> 
+
+        <div className='order-summary'>
+          <div className='order-summary-container'>
+          {finalCartItems.map((product) => (
+                <SingleCartDetails 
+                  key={product.id} 
+                  id={product.id} 
+                  image={product.image} 
+                  description={product.description} 
+                  price={product.price} 
+                  itemQty={product.qty}
+                  />
+              ))}
+          </div>
+              <div>total cost: {totalCost}</div>
+        </div>
     </div>
   )
 }

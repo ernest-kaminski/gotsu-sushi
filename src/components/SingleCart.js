@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './SingleCart.css'
+import SingleCartDetails from './SingleCartDetails';
 
 
 function SingleCart(props){
@@ -29,9 +30,7 @@ function SingleCart(props){
 
       return (   
         <tr>
-         <td><img src={props.image} alt="" margin="auto"></img></td>
-         <td>{props.description}</td>
-         <td>{props.price + " zł"}</td>
+          <SingleCartDetails image={props.image} description={props.description} price={props.price}/>
          <td>
             <div className='add-to-cart-container'>
               <div className='counter-container'>

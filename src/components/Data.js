@@ -9,7 +9,7 @@ const data = {
             id: "1",
             image: set_party_360px,
             price: "200",
-            description: "8x sushi z łososia i 4x sushi z gówna xd" 
+            description: "Set Party 8x sushi z łososia i 4x sushi z gówna xd" 
         },
         {
             id: "2",
