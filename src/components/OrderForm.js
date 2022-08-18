@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./OrderForm.css"
 import './Button.css'
-import SingleCartDetails from './SingleCartDetails'
+import CardIcons from './CardIcons'
 
 const OrderForm = (props) => {
     const {finalCartItems, countTotalCost} = props;
@@ -13,6 +13,11 @@ const OrderForm = (props) => {
     const [email, setEmail] = useState('')
     const [contact, setContact] = useState('')
 
+    const totalCostString = "Do zapłaty: "
+
+    const orderDetails = "Szczegóły zamówienia"
+    const orderContact = "Dane kontaktowe"
+    const paymentMethods = "Wybierz formę płatności"
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,37 +36,81 @@ const OrderForm = (props) => {
 
   return (
     <div className='order-form-container'>
+
+      <div className='order-summary'>
+      <div className='order-details-header'>
+              {orderContact}
+        </div>
         <form className='form-container' onSubmit={handleSubmit}>
-            <label for="fname">imię:</label>
-            <input type="text" id="fname" name="fname" required onChange={(e) => setName(e.target.value)}/>
-            <label for="lname">Nazwisko:</label>
-            <input type="text" id="lname" name="lname" required onChange={(e) => setSurname(e.target.value)}/>
-            <label for="address">adres dostawy:</label>
-            <input type="text" id="address" name="fname" required onChange={(e) => setAddress(e.target.value)}/>
-            <label for="email">email:</label>
-            <input type="text" id="email" name="lname" required onChange={(e) => setEmail(e.target.value)}/>
-            <label for="telephone">nr telefonu kontaktowego:</label>
-            <input type="text" id="contact" name="lname" required onChange={(e) => setContact(e.target.value)}/>
-            <button className='btn--order' type='submit'>Zamów</button>
+          <div className='form-row with-space'>
+            <div className='input-to-right'>
+              <label for="fname">imię:</label>
+              <input type="text" id="fname" name="fname" required onChange={(e) => setName(e.target.value)}/>
+            </div>
+          </div>
+          <div className='form-row with-space'>
+            <div className='input-to-right'>
+              <label for="lname">Nazwisko:</label>
+              <input type="text" id="lname" name="lname" required onChange={(e) => setSurname(e.target.value)}/>
+              </div> 
+          </div>
+          <div className='form-row with-space'>
+            <div className='input-to-right'>
+              <label for="address">adres dostawy:</label>
+              <input type="text" id="address" name="fname" required onChange={(e) => setAddress(e.target.value)}/>
+              </div> 
+          </div>
+          <div className='form-row with-space'>
+            <div className='input-to-right'>
+              <label for="email">email:</label>
+              <input type="text" id="email" name="lname" required onChange={(e) => setEmail(e.target.value)}/>
+              </div> 
+          </div>          
+          <div className='form-row with-space'>
+            <div className='input-to-right'>
+              <label for="telephone">nr telefonu kontaktowego:</label>
+              <input type="text" id="contact" name="lname" required onChange={(e) => setContact(e.target.value)}/>
+              </div> 
+          </div>
+              <div className='with-space'><button className='btn--order' type='submit'>Zamów</button></div>
         </form> 
 
+        <div className='order-details-header'>
+              {paymentMethods}
+        </div>
+        <div className='form-container'>
+          <CardIcons />
+        </div>
+
+      </div>
+
+
+      
         <div className='order-summary'>
+        <div className='order-details-header'>
+              {orderDetails}
+            </div>
           <div className='order-summary-container'>
           {finalCartItems.map((product) => (
-                <SingleCartDetails 
-                  key={product.id} 
-                  id={product.id} 
-                  image={product.image} 
-                  description={product.description} 
-                  price={product.price} 
-                  itemQty={product.qty}
-                  />
+            <div className='single-order-container'>
+              <div className='single-order-left'>
+                <div>{product.name}</div>
+                <br></br>
+                <img src={product.image240px} alt="" margin="auto"></img>
+              </div>
+              <div className='single-order-right'>
+              <div className='with-space'>{product.description}</div>
+              <div className='with-space'>Zamówiona ilość: {product.qty}</div>
+              <div className='with-space'>Łączna cena: {product.price}</div>
+              </div>
+            </div>
               ))}
           </div>
-              <div>total cost: {totalCost}</div>
+              <div className='order-details-footer'>{totalCostString} {totalCost} zł</div>
         </div>
     </div>
   )
 }
 
 export default OrderForm
+
