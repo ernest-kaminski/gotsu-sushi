@@ -25,10 +25,11 @@ function Order(props){
     useEffect(() => {
       prepareCartItemsFromCart();
     }, [])
+
     function mappedSingleCarts() {
       finalCartItems.map((x) => products[x.id - 1].qty = x.qty)
       return(products.map((product) => ( 
-        <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} itemQty={product.qty}/>
+        <SingleCart key={product.id} id={product.id} image={product.image} description={product.description} price={product.price} onAdd={onAdd} onRemove={onRemove} itemQty={product.qty} name={product.name}/>
         )))
       }
     
@@ -39,11 +40,6 @@ function Order(props){
         </Popup>
         <table className='table-container'>
           {mappedSingleCarts()}
-          <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          </tr>
         </table>
         <div className='buttons-container'>
             <div>

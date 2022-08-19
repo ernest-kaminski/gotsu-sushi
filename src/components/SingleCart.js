@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './SingleCart.css'
-import SingleCartDetails from './SingleCartDetails';
-
 
 function SingleCart(props){
 
@@ -29,8 +27,17 @@ function SingleCart(props){
 
 
       return (   
-        <tr>
-          <SingleCartDetails image={props.image} description={props.description} price={props.price}/>
+        <div className='single-cart-container'>
+          <div className='image-container'><img src={props.image} alt="" margin="auto"></img></div>
+          <div className='name-and-description-container'>
+            <div className='name-container'>
+              {props.name}
+            </div>
+            <div className='description-container'>
+              {props.description}
+            </div>
+          </div>
+          <div className='counter-container'>{props.price + " zł"}</div>
          <td>
             <div className='add-to-cart-container'>
               <div className='counter-container'>
@@ -41,7 +48,7 @@ function SingleCart(props){
               </div>
             </div>
          </td>
-       </tr>
+       </div>
    )
 
 }

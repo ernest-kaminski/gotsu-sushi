@@ -18,10 +18,9 @@ const OrderForm = (props) => {
     const orderDetails = "Szczegóły zamówienia"
     const orderContact = "Dane kontaktowe"
     const paymentMethods = "Wybierz formę płatności"
+    const payAndOrder = "Zamawiam i płacę"
     
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    const handleSubmit = () => {
         console.log("form submited")
         console.log("/n")
         console.log(name)
@@ -41,7 +40,7 @@ const OrderForm = (props) => {
       <div className='order-details-header'>
               {orderContact}
         </div>
-        <form className='form-container' onSubmit={handleSubmit}>
+        <form className='form-container'>
           <div className='form-row with-space'>
             <div className='input-to-right'>
               <label for="fname">imię:</label>
@@ -72,7 +71,7 @@ const OrderForm = (props) => {
               <input type="text" id="contact" name="lname" required onChange={(e) => setContact(e.target.value)}/>
               </div> 
           </div>
-              <div className='with-space'><button className='btn--order' type='submit'>Zamów</button></div>
+              <div className='with-space'></div>
         </form> 
 
         <div className='order-details-header'>
@@ -81,7 +80,7 @@ const OrderForm = (props) => {
         <div className='form-container'>
           <CardIcons />
         </div>
-
+        <button className='submit-button' type='submit' onClick={() => handleSubmit()}>{payAndOrder}</button>
       </div>
 
 

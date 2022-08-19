@@ -1,3 +1,38 @@
+.single-cart-container{
+    width: 100%;
+    margin: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 2px groove brown;
+    border-radius: 48px;
+    box-shadow: 1px 1px 1px 1px #222;
+    position: relative;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+}
+
+.image-container{
+    padding: 4px;
+}
+
+.name-and-description-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.name-container{
+    color: brown;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.description-container{
+    align-items: flex-end;
+    font-size: 14px;
+}
+
 .add-to-cart-container{
     width: 100%;
     align-items: center;
@@ -15,7 +50,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    position: relative;
+    top: 50px;
 }
 
 .count-value-container{

@@ -106,3 +106,27 @@ input{
     padding: 3px;
     margin-left: 10px;
 }
+
+.submit-button{
+    padding: 8px 60px;
+    font-size: 20px;
+    background: #000;
+    color: white;
+    border: 4px groove white;
+    border-radius: 12px;
+    margin: 30px 4px 4px;
+    box-shadow: 1px 5px 5px 5px #222;
+}
+
+.submit-button:hover{
+    cursor: pointer;
+    padding: 8px 60px;
+    font-size: 20px;
+    background: #000;
+    color: brown;
+    border: 4px groove brown;
+    border-radius: 12px;
+    margin: 30px 4px 4px;
+    transition: ease-in .1s;
+    box-shadow: 1px 5px 5px 5px #222;
+}
